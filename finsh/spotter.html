@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+		<title>FitMeUp</title>
+		<meta charset = "utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="../out/components/container.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/grid.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/header.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/image.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/menu.css">
+
+  		<link rel="stylesheet" type="text/css" href="../out/components/divider.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/dropdown.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/segment.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/button.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/list.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/icon.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/sidebar.css">
+  		<link rel="stylesheet" type="text/css" href="../out/components/transition.css">
+
+		<style type="text/css">
+
+		</style>
+		
+		<script src="assets/library/jquery.min.js"></script>
+ 		<script src="../out/components/visibility.js"></script>
+ 		<script src="../out/components/sidebar.js"></script>
+ 		<script src="../out/components/transition.js"></script>
+		
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="semantic/out/semantic.min.css">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+		<script src="semantic/out/semantic.min.js"></script>
+		
+		<style type="text/css">
+			.hidden.menu { display: none;}
+			.masthead.segment {
+  			min-height: 700px;
+  			padding: 1em 0em;
+			}
+      .masthead .logo.item img {
+        margin-right: 1em;
+      }
+      .masthead .ui.menu .ui.button {
+        margin-left: 0.5em;
+      }
+      .masthead h1.ui.header {
+        margin-top: 3em;
+        margin-bottom: 0em;
+        font-size: 4em;
+        font-weight: normal;
+      }
+      .masthead h2 {
+        font-size: 1.7em;
+        font-weight: normal;
+      }
+
+      .ui.vertical.stripe {
+        padding: 8em 0em;
+      }
+      .ui.vertical.stripe h3 {
+        font-size: 2em;
+      }
+      .ui.vertical.stripe .button + h3,
+      .ui.vertical.stripe p + h3 {
+        margin-top: 3em;
+      }
+      .ui.vertical.stripe .floated.image {
+        clear: both;
+      }
+      .ui.vertical.stripe p {
+        font-size: 1.33em;
+      }
+      .ui.vertical.stripe .horizontal.divider {
+        margin: 3em 0em;
+      }
+
+      .quote.stripe.segment {
+        padding: 0em;
+      }
+      .quote.stripe.segment .grid .column {
+        padding-top: 5em;
+        padding-bottom: 5em;
+      }
+
+      .footer.segment {
+        padding: 5em 0em;
+      }
+
+      .secondary.pointing.menu .toc.item {
+        display: none;
+      }
+    @media only screen and (max-width: 700px) {
+      .ui.fixed.menu {
+        display: none !important;
+      }
+      .ui.inverted.menu {
+        display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: block;
+      }
+      .masthead.segment {
+        min-height: 350px;
+      }
+      .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+      }
+      .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+      }
+    }
+		</style>
+	  <script>
+  $(document)
+    .ready(function() {
+
+      // fix menu when passed
+      $('.masthead')
+        .visibility({
+          once: false,
+          onBottomPassed: function() {
+            $('.fixed.menu').transition('fade in');
+          },
+          onBottomPassedReverse: function() {
+            $('.fixed.menu').transition('fade out');
+          }
+        })
+      ;
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+  </script>		
+	</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+  <div class="ui container">
+    <a class="active item">Home</a>
+    <a class="item">Flexa</a>
+    <a class="item">Spotter</a>
+    <div class="right menu">
+      <div class="item">
+        <a class="ui button">Log in</a>
+      </div>
+      <div class="item">
+        <a class="ui primary button">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Page Contents -->
+<div class="pusher">
+
+  <div class="ui inverted vertical masthead center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large inverted menu">
+        <a class="item" href="/">Home</a>
+        <a class="item" href="/flexa.html">Flexa</a>
+        <a class="ibverted active item">Spotter</a>
+        <div class="right item">
+          <a class="ui inverted button">Log in</a>
+          <a class="ui inverted button">Sign Up</a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="ui text container">
+      <div class = "ui two column grid" style="padding-top: 30px !important">       
+        <div class = "row">
+          <div class = "column">
+            <div class = "row">
+              <div class="ui form">
+                <div class="fields">
+                  <div class="field">
+                    <label style="color: white !important">First name</label>
+                    <input type="text" placeholder="First Name" id = "firstName">
+                  </div>
+                  <div class="field">
+                    <label style="color: white !important">Last name</label>
+                    <input type="text" placeholder="Last Name" id = "lastName">
+                  </div>
+                </div>
+                <div class = "field">
+                  <div class="field">
+                    <label style="color: white !important">User Name</label>
+                    <input type="text" placeholder="User Name" id = "userName">
+                  </div>
+                  <div class="field">
+                    <label style="color: white !important">Phone Number</label>
+                    <input type="text" placeholder="Phone Number" id = "phoneNumber">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "row">
+              <div class="ui sub header">Choose Your Workout</div>
+              <select name="skills" id = "workoutID" class="ui fluid search dropdown selection active visible">
+                <option value="Weight Lifting">Weight Lifting</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Sports">Sports</option>
+              </select>
+            </div>
+            <div class = "row" style="padding-top: 5px !important">
+              <div class="ui sub header">Disabilites</div>
+              <select name="skills" id = "disabilitesQuestion" class="ui fluid search dropdown selection active visible">
+                <option value="disabilitiesYes">Yes</option>
+                <option value="disabilitiesNo">No</option>
+              </select>
+            </div>
+            <div class = "row" style="padding-top: 5px !important">
+              <button onclick="submitClick()" class = "ui grey button" id = "submitButton">Submit</button>    
+            </div>
+
+            <div class = "row" style="padding-top: 10px !important">
+              <button onclick="findClick()" class = "ui grey button" id = "findButton">Find Buddy</button>    
+            </div>
+
+            <div class = "row" style="padding-top: 10px !important">
+              <div id = "answer"> </div>
+            </div>
+          </div>
+          <div class = "column">
+              
+
+    <div id="map"></div>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+  var service;
+        var pos;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            var marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              title: 'You are here',
+              icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+             });
+
+             map.setCenter(pos); 
+
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+            location: pos,
+            radius: 5000,
+            type: 'gym'
+            }, callback);
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      } 
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+        });
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOMCCWzHACsaO4FI9EcRJFO1S3a2g2i1s&libraries=places&callback=initMap">
+    </script>
+
+
+
+
+
+
+
+
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Home</a>
+            <a href="#" class="item">Contact Us</a>
+            <a href="#" class="item">Amazon Alexa</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Sepecial Thanks</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Amazon</a>
+            <a href="#" class="item">domain.com</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Note From Progression</h4>
+          <p>We always recommend consulting a physican before engaging in rigorous physical activities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+<script>
+  $(document).ready(function(){
+
+    $('.tag.example .ui.dropdown').dropdown({
+        allowAdditions: true
+      });
+
+  });
+
+  var config = {
+  apiKey: "AIzaSyBZanPJnJsLtmx5--EmfnxsMPGNrF6idNA",
+  authDomain: "hackdavis2017-fbda4.firebaseapp.com",
+  databaseURL: "https://hackdavis2017-fbda4.firebaseio.com",
+  storageBucket: "hackdavis2017-fbda4.appspot.com",
+  messagingSenderId: "660390013154"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+  function writeUserData(userId, firstName, lastName, workout, disabilities, ID, phone) {
+    firebase.database().ref('users/' + userId).set({
+      firstName: firstName,
+      lastName: lastName,
+      workout: workout,
+      disabilities : disabilities,
+      userID: ID,
+      phoneNumber: phone
+    });
+  }
+
+  function submitClick(){
+
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var userName = document.getElementById('userName').value;
+    var workoutID = document.getElementById('workoutID').value;
+    var disabilitesQuestion = document.getElementById('disabilitesQuestion').value;
+    var phone = document.getElementById('phoneNumber').value;
+    console.log(firstName);
+    console.log(lastName);
+    console.log(userName);
+    console.log(workoutID);
+    console.log(disabilitesQuestion);
+    console.log(phone);
+
+
+    writeUserData(userName, firstName, lastName, workoutID, disabilitesQuestion, userName, phone);
+
+  }
+
+  function findClick(){
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var workoutID = document.getElementById('workoutID').value;
+    var disabilitesQuestion = document.getElementById('disabilitesQuestion').value;
+    var userName = document.getElementById('userName').value;
+
+    var playersRef = firebase.database().ref("users/");
+
+      // playersRef.orderByChild("name").on("child_added", function(data) {
+      //    var test = data.val().name;
+      //    console.log(typeof(test));
+      // });
+
+      playersRef.on('value', function(snapshot) {
+
+        var matches = [];
+        var lN = [];
+        var pN = [];
+        var getCharacter;
+        var counter = 0;
+        var message = snapshot.val();
+
+          for (var key in message) {
+            if (message.hasOwnProperty(key)) {
+              
+              if(message[key].userID == userName){
+                getCharacter = key;
+              }
+            }
+          }
+          for (var key in message) {
+            if (message.hasOwnProperty(key)) {
+              if(message[getCharacter].lastName == message[key].lastName && message[getCharacter].firstName == message[key].firstName){
+                console.log("ignore");
+              }else if(message[getCharacter].workout == message[key].workout && message[getCharacter].disabilities == message[key].disabilities){
+                matches[counter] = message[key].firstName;
+                lN[counter] = message[key].lastName;
+                pN[counter] = message[key].phoneNumber;
+                counter++;
+                console.log("match");
+              }
+            }
+          }
+
+          var stringAnswer = "Here our some individuals that meet your requirements. <br>";
+          var theBreak = "<br>";
+
+          var outputAnswer = document.getElementById('answer');
+          for(i = 0; i < matches.length; i++){
+            console.log(matches[i]);
+            stringAnswer = stringAnswer.concat(matches[i]);
+            stringAnswer = stringAnswer.concat(" ");
+            stringAnswer = stringAnswer.concat(lN[i]);
+            stringAnswer = stringAnswer.concat("  |||  Phone Number: ");
+            stringAnswer = stringAnswer.concat(pN[i]);
+            outputAnswer.innerHTML = stringAnswer;
+            stringAnswer = stringAnswer.concat(theBreak);
+          }
+
+
+      });
+
+
+
+    // return firebase.database().ref('/users/' + userName).once('value').then(function(snapshot) {
+    //   var username = snapshot.val().userName;
+    //   console.log(username);
+    // });
+
+  }
+
+</script>
+
+</body>
+
+
+
+</html>
