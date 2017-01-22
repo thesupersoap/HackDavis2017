@@ -50,8 +50,10 @@ module.exports = {
 
         'tougher situps' : 'Alright, lets do ten $MEDIUM situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great work.',
         'situps' : 'Okay, lets do ten $EASY situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great job.',
+        'sit up' : 'Okay, lets do ten $EASY situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great job.',
+        'sit ups' : 'Okay, lets do ten $EASY situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great job.',
         'situp' : 'Okay, lets do ten $EASY situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great job.',
-        'hard situps' : 'Alright, lets do ten $HARD situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great work.',
+        'hard sit ups' : 'Alright, lets do ten $HARD situps. Begin. 1 2 3 4 5 6 7 8 9 10. Great work.',
         'crunches' : 'Lets do some crunches. Lets begin. 1 2 3 4 5 6 7 8 9 10. Awesome job.',
         'my workout today' : 'Today we recommend starting off with some easy pushups and some situps.',
         'my workout tomorrow' : 'Tomorrow we\'re going to increase the amount of pushups and introduce squats. You got this!',
